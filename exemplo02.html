@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aula2js</title>
+<link rel="shortcut icon" href="/assets/cookie.png.png" type="image/x-icon">
+</head>
+
+<style>
+@charset "utf-008";
+
+:root{
+    --biscoife:#fff;
+    --rodolfo:#000;
+    --bomdia:#7d1ad4;
+    --fefe:#6e17b9;
+    --texto-claro:#000;   
+    --texto-escuro:#fff;
+}
+
+
+
+
+
+[data-theme="dark"] {
+   --fundo-claro: #000;
+   --fundo-escuro:#fff;
+   --texto-claro:#fff;
+   --texto-escuro:#000;
+}
+
+*{
+margin: 0;
+padding: 0;
+}
+
+body{
+background-color: var(--biscoife);
+color: var(--texto-claro);
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+} 
+
+div {
+background-color: var(--rodolfo);
+color: var(--texto-escuro);
+display: flex;
+flex-direction: column;
+gap: 2rem;
+align-items: center;
+padding: 2rem;
+border-radius: 0.9rem;
+}
+ button{
+background-color: var(--bomdia);
+color: var(--texto-escuro);
+padding: 0.4rem;
+border: none;
+border-radius: 50%;
+width: 80px;
+height: 80px;
+cursor: pointer;
+ } 
+ 
+ button:hover {
+background-color: var(--fefe);
+transition: 0.8s;
+ }
+ 
+svg{
+color: var(--texto-claro);
+width: 34px;
+height: 34px;
+}
+
+
+</style>
+
+<body>
+<h1>dia de deploy</h1>
+    <div>
+        <h1>titulo</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non, quae recusandae ducimus quis ratione est optio
+            blanditiis omnis libero illo consectetur sed porro architecto fugiat totam inventore praesentium fugit
+            laudantium.
+        </p>
+          <button id="bnt-dark-mode">
+          
+          </button>       
+    </div>
+</body>
+
+<script>
+
+const bntDarkmode = document.getElementById('bnt-dark-mode');
+
+const themeSystem = localStorage.getItem('themeSystem')  || 'light';
+
+bntDarkmode.addEventListener('click', () => {
+
+let oldtheme = localStorage.getItem('themeSyTem') || 'light';
+
+let newtheme = oldtheme === "light" ? "dark" : "light";
+
+localStorage.setItem('themeSystem', newtheme)
+
+defineCurrentTheme(newtheme);
+})
+function defineCurrentTheme(theme) {
+ 
+    const darkSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
+        fill="currentColor" class="w-6 h-6"><path d="M12 3v1m8.793 9.793-1.414 1.414m-7.07 
+        0 7.07 7.071m1.414-1.414L21 21v-1m-4.243-8.485-1.414-1.414M12 21v-1m-8.793-9.793L5 
+        5.05M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4Z"/></svg>`;
+
+        const lightSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
+        fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M9.5 12a2.5 2.5 
+        0 1 1 5 0 2.5 2.5 0 0 1-5 0ZM12 1a7 7 0 1 0 0 14A7 7 0 0 0 12 1ZM2 12C2 6.477 6.477 
+        2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z" clip-rule="evenodd" /></svg>`;
+        // Define o atributo 'data-theme' no elemento 'html' com o valor do tema atual.
+        // Isso permite que as regras CSS com '[data-theme="..."]' sejam aplicadas.
+        document.documentElement.setAttribute("data-theme", theme);
+
+        // Verifica se o tema atual é 'light'.
+        if (theme === "light") {
+            // Se for 'light', define o conteúdo interno do botão com o SVG do modo escuro.
+            // Isso sugere que o botão, ao estar no tema claro, terá um ícone para ativar o modo escuro.
+            btnDarkMode.innerHTML = darkSvg;
+            return; // Sai da função após definir o ícone.
+        }
+
+        // Se o tema não for 'light' (implica que é 'dark' neste caso),
+        // define o conteúdo interno do botão com o SVG do modo claro.
+        // Isso sugere que o botão, ao estar no tema escuro, terá um ícone para ativar o modo claro.
+        btnDarkMode.innerHTML = lightSvg;
+    }
+
+    // Chama a função 'defineCurrentTheme' inicialmente com o tema obtido do 'localStorage'
+    // (ou 'light' se nenhum tema estiver salvo). Isso garante que o tema correto seja aplicado
+    // quando a página carrega.
+    defineCurrentTheme(themeSystem);
+
+
+
+</script>
+
+</html>
