@@ -44,6 +44,30 @@ display: flex;
 align-items: center;
 gap: 50px;
 }
+
+.clock span:not(last-child)::after{
+content: ':';
+margin-bottom: 25px;
+color: var(--color-light);
+}
+
+h2{
+width: 100%;
+text-align: var(--color-light);
+}
+
+h2 strong{
+color: var(--color-carmen);
+}
+
+@media screen and( max-width:992px){
+  .clock span{
+ font-size: 50px;
+}
+}
+
+
+
 </style>
 </head>
 <body> 
@@ -55,11 +79,38 @@ gap: 50px;
 
 <h2>
 <strong>
-@_ivanpaulino - vocacao 2025
+@_aleciosousadecarvalho - vocacao 2025
 </strong>
 </h2>
 
-<style>
-</style>
+
 </body>
+
+<script>
+
+const hoursElement = document.getElementById(`hours`)
+
+const minutesElement = document.getElementById(`minutes`)
+
+const secondsElement = document.getElementById(`seconds`)
+
+function fixTime(){
+ return time < 10 ? `0` + time : time;
+}
+
+function newTime(){
+const date =date();
+const hours =date();
+const minutes =date();
+const seconds =date();
+
+hoursElement.textContent = fixTime(hours);
+minutesElement.textContent = fixTime(minutes);
+secondsElement.textContent = fixTime(seconds);
+}
+
+newTime()
+setInterval(newTime, 1000);
+
+</script>
 </html>
