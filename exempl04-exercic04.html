@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aula04_Light_Buld</title>
+    <link rel="shortcut icon" href="/lightbulb.png.png" type="image/x-icon">
+
+    <style>
+        :root {
+            --gabriel: blue;
+            --ster: purple;
+            --nicolas: green;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--ster);
+            background-image: linear-gradient(to top var(--gabriel), var(--nicolas));
+            background-attachment: fixed;
+        }
+
+        header,
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            width: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            lãmpada
+        </h1>
+    </header>
+
+    <section>
+        <div>
+            <img src="/assets/lamp_off.jpeg" 
+            alt="lâmpada" id="lamp">
+        </div>
+
+        <div>
+            <button id="turnOn">Bomdia</button>
+            <button id="turnOff">AchoBom</button>
+        </div>
+    </section>
+
+</body>
+
+<script>
+
+    const turnOn = document.getElementById("turnOn");
+    const turnOff = document.getElementById("turnOff")
+    const lamp = document.getElementById("lamp")
+
+    function isLampBroken() {
+        return Lamp.src.indexOf("quebrada") > -1
+    }
+
+    function lampOn() {
+        if (!isLampBroken()) {
+            lamp.src = "/assets/lamp_on.jpeg";
+            function lampOff() {
+                if (!isLampBroken)
+                    lamp.src = "/assets/lamp_off.jpeg";
+            }
+
+        }
+function LampBroken() {
+}
+
+turnOn.addEventListener('click', lampOn);
+turnOff.addEventListener('click', lampOff);
+lamp.addEventListener('mouseover', lampOn)
+lamp
+lamp
+</script>
+
+</html>
